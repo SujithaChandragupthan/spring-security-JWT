@@ -22,8 +22,10 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JWTService jwtService;
 
-        public String addUser(User user){
+    public String addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "User added to System";
